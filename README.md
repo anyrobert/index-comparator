@@ -1,6 +1,6 @@
 # Brazil Investment Comparison
 
-Compare 1/3/6/12‑month performance of **Tesouro Selic**, **Ibovespa (IBOV)** and **CDB** (CDI-based) with a single chart (index base 100).
+Compare of **Tesouro Selic**, **Ibovespa (IBOV)** and **CDI** with a single chart.
 
 ## Run
 
