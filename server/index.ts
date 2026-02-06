@@ -1,7 +1,12 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { getCached, setCached } from './api-cache';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -297,6 +302,15 @@ app.get('/api/compare', async (req: Request, res: Response) => {
     });
   }
 });
+
+// Serve built client in production (e.g. Docker)
+const staticDir = path.join(__dirname, '../client/dist');
+if (fs.existsSync(staticDir)) {
+  app.use(express.static(staticDir));
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(staticDir, 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

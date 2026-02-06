@@ -4,6 +4,17 @@ Compare of **Tesouro Selic**, **Ibovespa (IBOV)** and **CDI** with a single char
 
 ## Run
 
+### Docker (single container, recommended for VPS)
+
+```bash
+docker build -t investment .
+docker run -p 3001:3001 investment
+```
+
+App available at http://localhost:3001. Override port: `-p 80:3001` or `-e PORT=80`.
+
+### Local development
+
 1. Install dependencies (root + client + server):
    ```bash
    npm install
