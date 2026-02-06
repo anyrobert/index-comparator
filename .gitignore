@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.api-cache.json
+server/.api-cache.json

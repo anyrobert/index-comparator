@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+/* Base layout and theme (Web Interface Guidelines: color-scheme, native select) */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+body {
+  @apply min-h-screen min-w-[320px] antialiased bg-neutral-100 text-neutral-900;
+  /* Touch: remove double-tap zoom delay */
+  touch-action: manipulation;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
+}
+
+/* Honor prefers-reduced-motion (Animation guideline) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Heading anchors for skip / deep links (Accessibility) */
+:target {
+  scroll-margin-top: 2rem;
+}
+
+/* Focus: visible ring only on keyboard focus (Focus States) */
+:focus-visible {
+  @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-white dark:ring-offset-neutral-900;
+}
+
+/* Tabular numbers for currency and comparisons (Typography) */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
